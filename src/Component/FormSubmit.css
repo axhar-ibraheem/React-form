@@ -1,0 +1,13 @@
+.list-items {
+  width: 90vw;
+  max-width: 700px;
+  padding: 5px 0.8rem;
+  background: rgb(255, 255, 255);
+  margin: 0 auto;
+  border-radius: 7px;
+}
+.text {
+  border: 2px solid rgb(121, 121, 121);
+  padding: 0.2rem 0.33rem;
+  margin: 1rem 0rem;
+}

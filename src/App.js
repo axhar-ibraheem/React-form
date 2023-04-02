@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import Form from "./Component/Form.js";
+import React, { useState } from "react";
+import FormSubmit from "./Component/FormSubmit.js";
 function App() {
+  const userDetails = [
+    {
+      key: Math.random(),
+      userName: "john",
+      age: 23,
+    },
+  ];
+  const [userList, setUsers] = useState(userDetails);
+
+  const addUserHandler = (user) => {
+    setUsers([user, ...userList]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Form onAddUser={addUserHandler} />
+      <FormSubmit item={userList} />
     </div>
   );
 }

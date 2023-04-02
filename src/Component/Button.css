@@ -1,0 +1,12 @@
+.btn {
+  margin-top: 0.5rem;
+  padding: 0.4rem 1rem;
+  text-transform: capitalize;
+  font-size: 1rem;
+  background: rgb(122, 13, 122);
+  color: white;
+  cursor: pointer;
+}
+.btn:hover {
+  background: rgb(158, 42, 152);
+}
