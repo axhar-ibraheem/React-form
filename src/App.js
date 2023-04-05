@@ -17,10 +17,10 @@ function App() {
   };
 
   return (
-    <div>
+    <>
       <Form onAddUser={addUserHandler} />
       <FormSubmit item={userList} />
-    </div>
+    </>
   );
 }
 
