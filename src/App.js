@@ -7,7 +7,8 @@ function App() {
     {
       key: Math.random(),
       userName: "john",
-      age: 23,
+      userAge: 23,
+      userCollegeName: "Trinity college",
     },
   ];
   const [userList, setUsers] = useState(userDetails);

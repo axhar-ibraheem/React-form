@@ -1,45 +1,56 @@
 import "./Form.css";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Button from "./Button";
 import ErrorModal from "./ErrorModal";
 
 const Form = (props) => {
-  const [userName, setUserName] = useState("");
-  const [userAge, setUserAge] = useState("");
+  const nameInputRef = useRef();
+  const ageInputRef = useRef();
+  const collegeInputRef = useRef();
+  // const [userName, setUserName] = useState("");
+  // const [userAge, setUserAge] = useState("");
   const [error, setError] = useState("");
 
-  const userNameHandler = (event) => {
-    setUserName(event.target.value);
-  };
-  const userAgeHandler = (event) => {
-    setUserAge(event.target.value);
-  };
+  // const userNameHandler = (event) => {
+  //   setUserName(event.target.value);
+  // };
+  // const userAgeHandler = (event) => {
+  //   setUserAge(event.target.value);
+  // };
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
+    const enteredName = nameInputRef.current.value;
+    const enteredAge = ageInputRef.current.value;
+    const enteredCollegeName = collegeInputRef.current.value;
 
     const data = {
       key: Math.random(),
-      userName: userName,
-      age: userAge,
+      userName: enteredName,
+      userAge: enteredAge,
+      userCollegeName: enteredCollegeName,
     };
-    if (userName.trim().length === 0 || userAge.trim().length === 0) {
+
+    if (enteredName.trim().length === 0 || enteredAge.trim().length === 0) {
       setError({
         title: "Invalid Input",
         message: "Please enter a valid name and age (non-empty values)",
       });
       return;
     }
-    if (+userAge < 1) {
+    if (+enteredAge < 1) {
       setError({
         title: "Invalid Age",
         message: "Please enter a valid age ( > 0)",
       });
       return;
     }
+
     props.onAddUser(data);
-    setUserName("");
-    setUserAge("");
+
+    nameInputRef.current.value = "";
+    ageInputRef.current.value = "";
+    collegeInputRef.current.value = "";
   };
   const errorHandler = () => {
     setError(null);
@@ -60,11 +71,12 @@ const Form = (props) => {
             username
           </label>
           <input
-            value={userName}
+            // value={userName}
             type="text"
             id="username"
             className="form-input"
-            onChange={userNameHandler}
+            // onChange={userNameHandler}
+            ref={nameInputRef}
           />
         </div>
         <div className="form-row">
@@ -72,11 +84,25 @@ const Form = (props) => {
             age (years)
           </label>
           <input
-            value={userAge}
+            // value={userAge}
             type="number"
             id="username"
             className="form-input"
-            onChange={userAgeHandler}
+            // onChange={userAgeHandler}
+            ref={ageInputRef}
+          />
+        </div>
+        <div className="form-row">
+          <label htmlFor="collegeName" className="form-label">
+            college name
+          </label>
+          <input
+            // value={userAge}
+            type="text"
+            id="collegeName"
+            className="form-input"
+            // onChange={userAgeHandler}
+            ref={collegeInputRef}
           />
         </div>
         <Button type="submit">add user</Button>

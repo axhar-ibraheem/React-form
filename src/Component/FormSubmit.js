@@ -5,7 +5,7 @@ const FormSubmit = (props) => {
   return (
     <div className="list-items">
       {props.item.map((item) => (
-        <UserList key={item.key} userName={item.userName} userAge={item.age} />
+        <UserList key={item.key} userName={item.userName} userAge={item.userAge} userCollegeName={item.userCollegeName} />
       ))}
     </div>
   );
